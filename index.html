@@ -2,8 +2,6 @@
 layout: default
 ---
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
 {% for curso in site.data.horarios.cursos %}
     {% for turma in curso.turmas %}
         <div class="container w3-center">
@@ -18,7 +16,7 @@ layout: default
         <tr>
             <td class="w3-theme-green">{{linha.horario}}</td>
             {% for aula in linha.aulas %}
-                {% if aula.disciplina == "INTERVALO" or aula.disciplina == "JANTAR" or aula.disciplina == "ALMOÇO" %}
+                {% if aula.disciplina == "INTERVALO" or aula.disciplina == "JANTAR" or aula.disciplina == "ALMOÃ‡O" %}
                     <td colspan="5" class="w3-theme-light">{{aula.disciplina}}</td>
                     {% break %}
                 {% else %}
