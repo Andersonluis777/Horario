@@ -1,92 +1,59 @@
 <!DOCTYPE html>
-<html>
-<title>Horários</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
- 
-<link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" href="css/template01.css">
-<link rel="stylesheet" href="css/template02.css">
-<link rel="stylesheet" href="css/template03.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
- <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-<body id="Home" class="w3-text-CSM">
-
-<!-- Navbar -->
-<div class="w3-top w3-theme-d1">
- <ul class="w3-navbar w3-left-align">
-  <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
-    <a class="w3-hover-white" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  </li>
-  <li><a href="#" class="w3-hide-small w3-theme-dark w3-hover-white">Home</a></li>
-  <li class="w3-hide-small"><a href="#curso" class="w3-theme-dark w3-hover-white">Cursos</a></li>
-  <li class="w3-hide-small"><a href="#professor" class="w3-theme-dark w3-hover-white">Professor</a></li>
- </ul>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
-    <ul class="w3-navbar w3-left-align w3-theme">
-      <li><a href="#curso">Cursos</a></li>
-      <li><a href="#professor">Professor</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Image Header -->
-<div class="w3-display-container w3-animate-opacity w3-center">
-  <img src="img/logo_ifpb.jpg" alt="boat" style="width:50%;min-height:350px;max-height:800px;">
-</div>
-
-<!-- Cursos -->
-<div class="w3-border w3-round w3-card-2 w3-theme-light w3-container w3-content w3-margin-top" style="width:90%;" id="home">
-
-  <div class="w3-center" id="curso">
-    <h1 style="font-family:verdana">Cursos</h1>
-       {{ content }}
-  </div>
-
-</div>
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-  <h4>Acesse também nossos websites</h4>
-  <a class="w3-btn-floating w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="w3-btn-floating w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="w3-btn-floating w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
-  <a class="w3-btn-floating w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
-  <a class="w3-btn-floating w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-
-  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
-    <a class="w3-btn w3-theme" href="#"><span class="w3-xlarge">
-    <i class="fa fa-chevron-circle-up"></i></span></a>
-  </div>
-</footer>
-
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Horários IFPB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="css/decor.css">
+    <link rel="stylesheet" href="css/cayman.css">
+    <link rel="icon" type="image/png" href="logo_if.png">
+    <script src="js/dropdown.js"></script>
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">IFPB - Campus Guarabira</h1>
+      <h2>Horários</h2>
+      <br>
+      <a href="#Informática" class="btn">Informática</a>
+      <a href="#Edificações" class="btn">Edificações</a>
+      <a href="#Contabilidade" class="btn">Contabilidade</a>
+      <a href="#GestãoComercial" class="btn">Gestão Comercial</a>
+    </section>
 <script>
-// Script for side navigation
-function w3_open() {
-    var x = document.getElementById("mySidenav");
-    x.style.width = "300px";
-    x.style.textAlign = "center";
-    x.style.fontSize = "40px";
-    x.style.paddingTop = "10%";
-    x.style.display = "block";
-}
-// Close side navigation
-function w3_close() {
-    document.getElementById("mySidenav").style.display = "none";
-}
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
+	function akuma(professor) {
+      var classes = document.getElementsByClassName("DivOP");
+      var i, davez;
+      for (i = 0; i < classes.length; i++){
+        davez = classes[i];
+        if (davez.style.display != "none"){
+          document.getElementById(davez.id).style.display = "none";
+        }
+      }
+    	document.getElementById(professor).style.display = "block";
+	}
 </script>
+<br/>
+    
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Professores</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+	{% for professorb in site.data.auxiliar.professores %}
+		<p onclick="akuma('{{professorb}}')">{{professorb}} </p>
+	{% endfor %}
+  </div>
+</div>
+	  
+	  
+    <section class="main-content">
+      
+      {{content}}
 
-</body>
+    </section>
+
+  </body>
 </html>
+   
