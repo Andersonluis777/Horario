@@ -7,7 +7,7 @@ layout: default
 <div ><h1 style="color:green">HORÁRIOS IFPB - Campus Guarabira</h1></div>
 
 <div class="w3-container">
-{% for curso in site.data.horario.cursos %}
+{% for curso in site.data.horarios.cursos %}
   <h1 align="center">{{curso.nome}}</h1>
   {% for turma in curso.turmas %}
     <h2>{{turma.nome}}</h2>
