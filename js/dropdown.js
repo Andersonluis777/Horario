@@ -14,5 +14,16 @@ function filterFunction() {
         } else {
             p[i].style.display = "none";
         }
+}
+    
+function botao(professor) {
+  var classes = document.getElementsByClassName("some");
+  var i, davez;
+  for (i = 0; i < classes.length; i++){
+    davez = classes[i];
+    if (davez.style.display != "none"){
+      document.getElementById(davez.id).style.display = "none";
     }
+  }
+    document.getElementById(professor).style.display = "block";
 }
