@@ -1,5 +1,5 @@
 main {
-	width: 600px; 
+	width: 1000px; 
 }
 
 h1{
@@ -147,7 +147,7 @@ td.user-name {
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #000000;
 }
 #myInput {
     border-box: box-sizing;
