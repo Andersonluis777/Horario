@@ -27,3 +27,15 @@ function botao(professor) {
   }
     document.getElementById(professor).style.display = "block";
 }
+    
+function botao(turma) {
+  var classes = document.getElementsByClassName("some");
+  var i, davez;
+  for (i = 0; i < classes.length; i++){
+    davez = classes[i];
+    if (davez.style.display != "none"){
+      document.getElementById(davez.id).style.display = "none";
+    }
+  }
+    document.getElementById(turma).style.display = "block";
+}
