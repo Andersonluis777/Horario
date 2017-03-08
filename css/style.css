@@ -146,8 +146,9 @@ td.user-name {
     cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #000000;
+.dropdown {
+    position: absolute;
+    display: block;
 }
 #myInput {
     border-box: box-sizing;
@@ -160,8 +161,8 @@ td.user-name {
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    display: block;
 }
 
 .dropdown-content {
