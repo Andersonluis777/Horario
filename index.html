@@ -1,33 +1,92 @@
----
+ ---
 layout: default
 ---
-<link type= "text/css" rel= "stylesheet" href= "CSS/stylesheet.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="CSS/w3.css">
-<div ><h1 style="color:green">HORÁRIOS IFPB - Campus Guarabira</h1></div>
+<h1> IFPB - Campus Guarabira </h1>
 
-<div class="w3-container">
-{% for curso in site.data.horarios.cursos %}
-  <h1 align="center">{{curso.nome}}</h1>
-  {% for turma in curso.turmas %}
-    <h2>{{turma.nome}}</h2>
-    <table class="w3-table w3-striped w3-table-all">
-      <thead>
-      <tr class="w3-red">
-        {% for coluna in turma.colunas %}
-          <th>{{coluna}}</th>
-        {% endfor %}
-       </tr>
-       <thead>
-        {% for linha in turma.linhas%}
-            <tr>
-            <div class="hora"><td>{{linha.horario}}</td></div>
-            {% for aula in linha.aulas %}
-                <div class="aula"><td>{{aula.disciplina}}<br>{{aula.professor}}</td></div>
-            {% endfor %}
-        </tr>
-        {% endfor%}
-     </table>
-  {% endfor %}
+<script>
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, p, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    p = div.getElementsByTagName("p");
+    for (i = 0; i < p.length; i++) {
+        if (p[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            p[i].style.display = "";
+        } else {
+            p[i].style.display = "none";
+        }
+    }
+}
+    
+function botao(professor) {
+  var classes = document.getElementsByClassName("some");
+  var i, davez;
+  for (i = 0; i < classes.length; i++){
+    davez = classes[i];
+    if (davez.style.display != "none"){
+      document.getElementById(davez.id).style.display = "none";
+    }
+  }
+    document.getElementById(professor).style.display = "block";
+}
+</script>
+
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Professores</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Buscar..." id="myInput" onkeyup="filterFunction()">
+	{% for profz in site.data.prof.professores %}
+		<p onclick="botao('{{profz}}')">{{profz}} </p>
+	{% endfor %}
+  </div>
+</div>
+{% for proff in site.data.prof.professores %}
+	{% if proff == "Todos" %}
+		<div class="some" id="{{proff}}" style="display: block">
+	{% else %}
+		<div class="some" id="{{proff}}" style="display: none">
+	{% endif %}
+	<h1>{{proff}}</h1>
+	{% for curso in site.data.horarios.cursos %}
+		<h1>{{curso.nome}}</h1>    
+
+	{% for turma in curso.turmas %}
+		<h2>{{turma.nome}}</h2>   
+
+		<table>
+
+	   <tr>
+		  {% for coluna in turma.colunas %}
+			<th>{{coluna}}</th> 
+		  {% endfor %}
+		 </tr>
+	   {% for linha in turma.linhas %}
+		 <tr>
+			 <td>{{linha.horario}}</td>
+			 {% if linha.aulas[0].disciplina == "INTERVALO" % or
+			 linha.aulas[0].disciplina == "ALMOÇO" or linha.aulas[0].disciplina == "JANTAR" %}
+				<td colspan="5"> {{linha.aulas[0].disciplina}} </td>
+			 {% else %}
+				 {% for aula in linha.aulas %}
+			 		{% if proff == aula.professor or proff == "Todos" %}
+				 		<td>{{aula.disciplina}} <br/> {{aula.professor}}</td>
+			 		{% else %}
+			 			<td> <br/> </td>
+			 		{% endif %}
+				 {% endfor %}
+			 {% endif %}
+		</tr>
+
+			 {% endfor %}
+			</table>
+
+	  {% endfor %}
+
+	  {% endfor %}
+	</div>
 {% endfor %}
-        </div>
